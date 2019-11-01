@@ -1,0 +1,85 @@
+﻿<Window x:Class="Recordify.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Recordify" Height="521" Width="532.843" Icon="Recordify_icon.ico" Closing="Window_Closing_1">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Current Song" x:Name="gbCurrentSong" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" x:Name="lblArtistDef" Content="Artist:" />
+                <Label Grid.Row="1" Grid.Column="0" x:Name="lblTitleDef" Content="Title:" />
+                <Label Grid.Row="2" Grid.Column="0" x:Name="lblAlbumDef" Content="Album:" />
+
+                <Label Grid.Row="0" Grid.Column="1" x:Name="lblArtist" Content="-" />
+                <Label Grid.Row="1" Grid.Column="1" x:Name="lblTitle" Content="-" />
+                <Label Grid.Row="2" Grid.Column="1" x:Name="lblAlbum" Content="-" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Recording settings" x:Name="gbRecordingSettings" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="lblDeviceDef" Grid.Row="0" Grid.Column="0" Content="Device:"></Label>
+                <Label x:Name="lblFolderDef" Grid.Row="1" Grid.Column="0" Content="Save songs in:"></Label>
+                <Label x:Name="lblBitrateDef" Grid.Row="2" Grid.Column="0" Content="Bitrate:"></Label>
+                
+                <ComboBox x:Name="cmbDevices" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"></ComboBox>
+                <TextBox x:Name="txbFolder" Grid.Row="1" Grid.Column="1"></TextBox>
+                <Button x:Name="btnOpenFolder" Grid.Row="1" Grid.Column="2" Click="btnOpenFolder_Click_1">
+                    <Image Source="/Recordify;Component/Resources/folder_Open_16xLG.png"></Image>
+                </Button>
+                <Button x:Name="btnChooseFolder" Grid.Row="1" Grid.Column="3" Content="Browse" Click="btnChooseFolder_Click"></Button>
+                <ComboBox x:Name="cmbBitrate" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"></ComboBox>
+            </Grid>
+        </GroupBox>
+        <Grid x:Name="grdStatus" Grid.Row="2">
+            <Label x:Name="lblRecordingStatus" Content="● REC" Foreground="Gray" FontSize="28" FontWeight="Bold"></Label>
+        </Grid>
+        <GroupBox Header="Song History" x:Name="gbSongHistory" Grid.Row="3">
+            <!--<ListBox x:Name="lbHistory"/>-->
+            <ListView x:Name="lvHistory">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Width="140" Header="Artist" DisplayMemberBinding="{Binding Path=Artist}"></GridViewColumn>
+                            <GridViewColumn Width="200" Header="Title" DisplayMemberBinding="{Binding Path=Title}"></GridViewColumn>
+                            <GridViewColumn Width="140" Header="Album" DisplayMemberBinding="{Binding Path=Album}"></GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="btnStart" Content="● REC" Click="btnStart_Click_1" Foreground="Red"></Button>
+            <Button Grid.Column="1" x:Name="btnStop" Content="■ Stop" Click="btnStop_Click_1" IsEnabled="False"></Button>
+        </Grid>
+    </Grid>
+</Window>
